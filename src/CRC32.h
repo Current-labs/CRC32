@@ -21,18 +21,34 @@
 // THE SOFTWARE.
 //
 // =============================================================================
+// *****************************************************************************
+// * MODIFICATIONS FOR Particle ENVIRONMENT
+// * @authors Brac Webb
+// * @date    24-Nov-2015
+// *****************************************************************************
+//  Copyright (c) 2015 Current Labs, Inc.  All rights reserved.
+// *****************************************************************************
 
+// #pragma once
 
-#pragma once
+#ifndef CRC32_H
+#define CRC32_H
 
-
-#include "Arduino.h"
-
+#include "application.h"
 
 class CRC32 
 {
+private:
+    uint32_t crc32_table [16] = {
+        0x00000000, 0x1db71064, 0x3b6e20c8, 0x26d930ac,
+        0x76dc4190, 0x6b6b51f4, 0x4db26158, 0x5005713c,
+        0xedb88320, 0xf00f9344, 0xd6d6a3e8, 0xcb61b38c,
+        0x9b64c2b0, 0x86d3d2d4, 0xa00ae278, 0xbdbdf21c
+    };
 public:
-    static uint32_t checksum(const uint8_t* data, size_t size);
-    static uint32_t update(uint32_t checksum, uint8_t data);
-    static uint32_t update(uint32_t checksum, const uint8_t* data, size_t size);
+    uint32_t checksum(const uint8_t* data, size_t size);
+    uint32_t update(uint32_t checksum, uint8_t data);
+    uint32_t update(uint32_t checksum, const uint8_t* data, size_t size);
 };
+
+#endif  /* CRC32_H */
