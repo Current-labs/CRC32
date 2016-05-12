@@ -34,7 +34,7 @@
 #ifndef CRC32_H
 #define CRC32_H
 
-#include "application.h"
+#include "Particle.h"
 
 class CRC32 
 {
